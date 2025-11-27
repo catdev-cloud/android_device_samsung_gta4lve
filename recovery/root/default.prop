@@ -1,0 +1,25 @@
+# USB Base
+persist.sys.usb.config=adb
+persist.sys.usb.state=adb
+ro.sys.usb.storage.type=mtp
+
+# ADB
+persist.service.adb.enable=1
+persist.service.debuggable=1
+service.adb.tcp.port=0
+persist.adb.nonblocking_ffs=1
+
+# Samsung / Unisoc USB
+sys.usb.ffs.ready=1
+sys.usb.controller=musb-hdrc
+
+# Display / DPI
+ro.sf.lcd_density=240
+
+# Platform
+ro.board.platform=ums512
+ro.product.board=P15945AA1
+
+# Safety 
+ro.secure=0
+ro.debuggable=1

@@ -1,0 +1,16 @@
+# Add for board init.rc for recovery mode
+import /init.recovery.common.rc
+import /init.recovery.unisoc_decrypt.rc
+import /init.recovery.usb.rc
+
+
+
+on init
+    export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
+
+on boot
+    start boot-hal-1-1
+    start health-hal-2-1
+
+on post-fs-data
+    mkdir /data/vendor/sprd_ss 0770 system system

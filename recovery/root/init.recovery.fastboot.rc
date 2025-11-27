@@ -1,0 +1,7 @@
+# Fastbootd Service
+service fastbootd /sbin/fastbootd
+    disabled
+    oneshot
+
+on property:sys.fastbootd=1
+    start fastbootd

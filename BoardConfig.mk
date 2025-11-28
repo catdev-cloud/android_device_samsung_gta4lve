@@ -10,37 +10,6 @@ DEVICE_PATH := device/samsung/gta4lve
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    update_engine \
-    update_engine_sideload \
-    update_verifier \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0-impl-wrapper.recovery \
-    android.hardware.boot@1.0-impl-wrapper \
-    android.hardware.boot@1.0-impl.recovery \
-    bootctrl.$(PRODUCT_PLATFORM) \
-    bootctrl.$(PRODUCT_PLATFORM).recovery \
-android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
-
-# fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.1-impl-mock \
-    fastbootd \
-    android.hardware.health@2.0-service
-
-
-# Dynamic partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-PRODUCT_SHIPPING_API_LEVEL := 30
-
-TARGET_OTA_ASSERT_DEVICE := gta4lve
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -158,4 +127,14 @@ TW_FRAMERATE := 60
 TW_DEVICE_VERSION := @CatDev3
 TW_HAS_DOWNLOAD_MODE := true
 
+TW_MTP_DEVICE := SM-T509
+
+
+# Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_USE_FSCRYPT_POLICY := 1
+BOARD_USES_METADATA_PARTITION := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+TW_PREPARE_DATA_MEDIA_EARLY := true
 

@@ -11,24 +11,19 @@ TARGET_RECOVERY_DEVICE_MODULES+= debuggerd
 
 #Packages
 
-PRODUCT_PACKAGES += 
-    otapreopt_script 
-    update_engine 
-    update_engine_sideload 
-    update_verifier 
-    android.hardware.boot@1.0-impl 
-    android.hardware.boot@1.0-service 
-    android.hardware.boot@1.0-impl-wrapper.recovery 
-    android.hardware.boot@1.0-impl-wrapper 
-    android.hardware.boot@1.0-impl.recovery 
-    bootctrl.$(PRODUCT_PLATFORM) 
-    bootctrl.$(PRODUCT_PLATFORM).recovery
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    update_engine \
+    update_engine_sideload \
+    update_verifier \
+    android.hardware.boot@1.1-impl \
+    android.hardware.boot@1.1-service \
+    bootctrl.unisoc \
+    bootctrl.unisoc.recovery 
 
-#Fastbootd packages
-
-PRODUCT_PACKAGES += 
-    fastbootd 
-    android.hardware.fastboot@1.0-impl 
+PRODUCT_PACKAGES += \
+    fastbootd \
+    android.hardware.fastboot@1.0-impl \
     android.hardware.fastboot@1.0-service
 
 #Dynamic partitions

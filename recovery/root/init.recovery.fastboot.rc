@@ -5,18 +5,18 @@ service fastbootd /system/bin/fastbootd
     class main
     user root
     group root system shell
-    seclabel u:r:fastbootd:s0
+    seclabel u:r:recovery:s0
     disabled
     oneshot
 
-# Trigger fastbootd when property is set from recovery
+# Trigger fastbootd when property is set from recovery UI
 on property:sys.fastbootd=1
     start fastbootd
 
-# Start fastbootd when USB composition requests fastboot mode
+# Trigger fastbootd when USB config requests it
 on property:sys.usb.config=fastboot
     start fastbootd
 
-# Confirm fastbootd is running
+# Optional: prop to check if it started
 on property:init.svc.fastbootd=running
     setprop sys.fastbootd.active 1

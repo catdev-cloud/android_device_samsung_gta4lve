@@ -1,4 +1,4 @@
-# Boot partitions
+#  BOOT / CORE PARTITIONS
 /dev/block/mmcblk0boot0                  /spl                emmc    defaults    defaults
 /dev/block/mmcblk0boot1                  /spl_bk             emmc    defaults    defaults
 /dev/block/by-name/uboot                 /uboot              emmc    defaults    defaults
@@ -10,7 +10,7 @@
 /dev/block/by-name/vbmeta_vendor         /vbmeta_vendor      emmc    defaults    defaults
 /dev/block/by-name/dtbo                  /dtbo               emmc    defaults    defaults
 
-# Modem & dsp
+#  MODEM / DSP
 /dev/block/by-name/l_ldsp                /ltedsp             emmc    defaults    defaults
 /dev/block/by-name/l_gdsp                /ltegdsp            emmc    defaults    defaults
 /dev/block/by-name/l_agdsp               /lteagdsp           emmc    defaults    defaults
@@ -23,7 +23,7 @@
 /dev/block/by-name/gnssmodem             /gnssmodem          emmc    defaults    defaults
 /dev/block/by-name/pm_sys                /pmsys              emmc    defaults    defaults
 
-# Core partitions
+#  CORE AND GRAPHICS
 /dev/block/by-name/misc                  /misc               emmc    defaults    defaults
 /dev/block/by-name/boot                  /boot               emmc    defaults    defaults
 /dev/block/by-name/recovery              /recovery           emmc    defaults    defaults
@@ -31,25 +31,26 @@
 /dev/block/by-name/logo                  /logo               emmc    defaults    defaults
 /dev/block/by-name/fbootlogo             /fbootlogo          emmc    defaults    defaults
 
-# Dynamic partitions (system-as-root)
-system            /system       ext4   ro   wait,logical,slotselect,first_stage_mount
-system_ext        /system_ext   ext4   ro   wait,logical,slotselect,first_stage_mount
-vendor            /vendor       ext4   ro   wait,logical,slotselect,first_stage_mount
-product           /product      ext4   ro   wait,logical,slotselect,first_stage_mount
-odm               /odm          ext4   ro   wait,logical,slotselect,first_stage_mount
+#  DYNAMIC PARTITIONS
+system      /system         ext4    ro    wait,logical,first_stage_mount
+system_ext  /system_ext     ext4    ro    wait,logical,first_stage_mount
+vendor      /vendor         ext4    ro    wait,logical,first_stage_mount
+product     /product        ext4    ro    wait,logical,first_stage_mount
+odm         /odm            ext4    ro    wait,logical,first_stage_mount
 
-# Metadata, Cache
+#  METADATA / CACHE / DATA
 /dev/block/by-name/metadata    /metadata     ext4   noatime,nosuid,nodev   wait,formattable,first_stage_mount
 /dev/block/by-name/cache       /cache        ext4   noatime,nosuid,nodev   wait,check
 
-# FIXED /DATA (this is the important fix)
-/dev/block/by-name/userdata    /data         f2fs   noatime,nosuid,nodev,discard    wait,check,formattable
+# ✔️ FIXED DATA (required for Unisoc f2fs)
+/dev/block/by-name/userdata    /data         f2fs   noatime,nosuid,nodev,discard    wait,check,formattable,quota
 
-# Extra vendor stuff
+#  EXTRA
 /dev/block/by-name/prodnv      /mnt/vendor   ext4   noatime,nosuid,nodev   wait,check
 
-# External storage
+#  EXTERNAL STORAGE
 /dev/block/mmcblk1p1           /sdcard       vfat    defaults    defaults
+
 /dev/block/by-name/sec_efs     /efs          ext4    defaults    recoveryonly
 /dev/block/by-name/sec_efs     /sec_efs      ext4    defaults    recoveryonly
 /dev/block/by-name/prism       /prism        ext4    defaults    recoveryonly

@@ -1,9 +1,6 @@
-#
 # Copyright (C) 2025 The Android Open Source Project
 # Copyright (C) 2025 SebaUbuntu's TWRP device tree generator
-#
 # SPDX-License-Identifier: Apache-2.0
-#
 
 DEVICE_PATH := device/samsung/gta4lve
 
@@ -97,6 +94,8 @@ RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_KERNEL_SEPARATED_DTBO := true
+TARGET_NO_RECOVERY := false
+BOARD_USES_RECOVERY_AS_BOOT := false
 
 # File System & Storage
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -147,11 +146,12 @@ TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone19/temp"
 TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity"
+TW_HAS_FASTBOOTD := true
 
 # Samsung
 TW_NO_REBOOT_BOOTLOADER := true
 TW_USE_SAMSUNG_HAPTICS := true
-TW_INCLUDE_FASTBOOTD := true
+TW_HAS_FASTBOOTD := true
 TW_HAS_DOWNLOAD_MODE := true
 
 # Copy Out 
@@ -173,3 +173,14 @@ TW_DEVICE_VERSION := DevCat3
 TW_INCLUDE_RESETPROP := true
 TW_NO_SCREEN_BLANK := true
 TW_INCLUDE_LIBUNWIND := true
+
+# Additional stuff
+TW_SUPPORT_INPUT_1_2_HAPTICS := true
+TW_USE_FSCRYPT_POLICY := 2
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS := boot system vendor
+
+# Fastbootd
+TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk"
+RECOVERY_BINARY_SOURCE_FILES := \
+    $(TARGET_OUT_EXECUTABLES)/debuggerd
